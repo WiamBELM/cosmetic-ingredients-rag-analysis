@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>🧴 Ingrédients par Produit</h1>
+<form method="post">
+    <select name="produit_id">
+        {% for p in produits %}
+        <option value="{{p.id}}" {% if selected_produit and p.id == selected_produit.id %}selected{% endif %}>{{p.nom}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn">Afficher</button>
+</form>
+
+{% if ingredients %}
+<div class="result-box">
+    <h3>Ingrédients :</h3>
+    <ul>
+        {% for i in ingredients %}
+        <li>{{ i.nom }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>🔍 Vérifier Compatibilité</h1>
+<form method="post">
+    <select name="produit1">
+        {% for p in produits %}
+        <option value="{{p.id}}">{{p.nom}}</option>
+        {% endfor %}
+    </select>
+    <select name="produit2">
+        {% for p in produits %}
+        <option value="{{p.id}}">{{p.nom}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn">Vérifier</button>
+</form>
+
+{% if result %}
+<div class="result-box">{{ result }}</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Base de Données — CosmétiQ’IA</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5);
+      color: #3a3a3a;
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+      font-size: 2rem;
+      margin-top: 30px;
+    }
+
+    .database-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th {
+      background: #fbcfe8;
+      color: #9d174d;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    td {
+      border-bottom: 1px solid #f5d0fe;
+      padding: 10px;
+      text-align: center;
+      color: #444;
+    }
+
+    tr:hover {
+      background: #fff0f7;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .btn-delete {
+      background-color: #f87171;
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background-color: #dc2626;
+    }
+
+    .btn-add {
+      background-color: #d63384;
+      color: white;
+    }
+
+    .btn-add:hover {
+      background-color: #a61e4d;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    input, select {
+      padding: 8px 12px;
+      border: 1px solid #fbcfe8;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: #d63384;
+    }
+
+    .back-link {
+      text-align: center;
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #d63384;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>💄 Gestion de la Base CosmétiQ’IA</h1>
+
+  <div class="database-container">
+    <h2>Produits</h2>
+    <table>
+      <tr><th>ID</th><th>Nom</th><th>Action</th></tr>
+      {% for produit in produits %}
+      <tr>
+        <td>{{ produit.id }}</td>
+        <td>{{ produit.nom }}</td>
+        <td>
+          <a href="/delete/produit/{{ produit.id }}" class="btn btn-delete">Supprimer</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Ingrédients</h2>
+    <table>
+      <tr><th>ID</th><th>Nom</th><th>Action</th></tr>
+      {% for ingr in ingredients %}
+      <tr>
+        <td>{{ ingr.id }}</td>
+        <td>{{ ingr.nom }}</td>
+        <td>
+          <a href="/delete/ingredient/{{ ingr.id }}" class="btn btn-delete">Supprimer</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <form action="/add" method="post">
+      <input type="text" name="nom" placeholder="Nom du produit ou ingrédient" required>
+      <select name="type">
+        <option value="produit">Produit</option>
+        <option value="ingredient">Ingrédient</option>
+      </select>
+      <button type="submit" class="btn btn-add">Ajouter</button>
+    </form>
+  </div>
+
+  <a href="/" class="back-link">← Retour à l’assistant CosmétiQ’IA</a>
+</body>
+</html>

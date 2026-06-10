@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CosmétiQ’IA — Analyse Cosmétique</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>💄 CosmétiQ’IA</h1>
+        <p>Posez une question sur un ingrédient, un produit, ou une compatibilité...</p>
+
+        <form action="/ask" method="post" enctype="multipart/form-data">
+            <label for="files" class="file-label">Sélect. fichiers</label>
+            <input type="file" id="files" name="files" multiple hidden>
+            <input type="text" name="question" placeholder="Ex : Ce produit est-il adapté aux peaux sensibles ?" class="input-question">
+            <button type="submit" class="analyze-btn">Analyser</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <pre>{{ result }}</pre>
+        </div>
+        {% endif %}
+
+        <footer>
+            <p>© 2025 CosmétiQ’IA — Par Wiam 💋</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>CosmétiQ'IA — Accueil</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌿 CosmétiQ'IA</h1>
+      <p class="subtitle">Explorez la beauté naturelle grâce à l’intelligence artificielle</p>
+    </header>
+
+    <div class="menu">
+      <a href="{{ url_for('ingredients') }}" class="card green">
+  🔍 Rechercher les Ingrédients
+</a>
+
+<a href="{{ url_for('compatibilite') }}" class="card pink">
+  🧪 Vérifier la Compatibilité
+</a>
+
+<a href="{{ url_for('categories') }}" class="card beige">
+  🌸 Explorer les Catégories
+</a>
+
+<a href="{{ url_for('analyse') }}" class="analyse-btn">
+  💬 Analyser un Produit ou une Question
+</a>
+
+
+    </div>
+  </div>
+</body>
+</html>
